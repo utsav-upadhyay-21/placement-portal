@@ -208,6 +208,10 @@
   flex-shrink: 0;
 }
 
+.legend-dot-past {
+  background: var(--muted-foreground);
+}
+
 .legend-name {
   font-family: var(--font-body);
   font-weight: 600;

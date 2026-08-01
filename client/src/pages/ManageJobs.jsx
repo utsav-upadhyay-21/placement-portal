@@ -26,7 +26,6 @@ function ManageJobs() {
   const [editingId, setEditingId] = useState(null);
 
   const token = localStorage.getItem("token");
-  if (!token) return <Navigate to="/admin/login" replace />;
 
   const fetchJobs = async () => {
     try {
@@ -42,6 +41,8 @@ function ManageJobs() {
   useEffect(() => {
     fetchJobs();
   }, []);
+
+  if (!token) return <Navigate to="/admin/login" replace />;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

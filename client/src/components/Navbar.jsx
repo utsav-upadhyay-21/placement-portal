@@ -13,11 +13,7 @@ function Navbar() {
   return (
     <nav className={`navbar ${token ? "navbar-admin" : ""}`}>
       <Link to="/" className="navbar-logo">
-        <img
-          src="https://i.ibb.co/qYRq69MV/rvitm-logo.webp"
-          alt="RVITM Placement Portal"
-          className="navbar-logo-img"
-        />
+        Placement Portal
       </Link>
       <div className="navbar-links">
         {token ? (

@@ -61,6 +61,15 @@ function Calendar() {
       (a, b) => new Date(a.visit_date) - new Date(b.visit_date)
     );
 
+  const pastEvents = events
+    .filter(
+      (event) =>
+        new Date(event.visit_date).getTime() < startOfToday
+    )
+    .sort(
+      (a, b) => new Date(b.visit_date) - new Date(a.visit_date)
+    );
+
   const getEventsForDay = (day) => {
     return events.filter((event) => {
       const d = new Date(event.visit_date);
@@ -178,6 +187,30 @@ function Calendar() {
                 onClick={() => setSelectedEvent(event)}
               >
                 <span className="legend-dot"></span>
+                <span className="legend-name">{event.company_name}</span>
+                <span className="legend-date">
+                  {new Date(event.visit_date).toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "short",
+                  })}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {pastEvents.length > 0 && (
+        <div className="calendar-legend">
+          <h3>Past Events</h3>
+          <div className="legend-list">
+            {pastEvents.map((event) => (
+              <div
+                key={event.id}
+                className="legend-item"
+                onClick={() => setSelectedEvent(event)}
+              >
+                <span className="legend-dot legend-dot-past"></span>
                 <span className="legend-name">{event.company_name}</span>
                 <span className="legend-date">
                   {new Date(event.visit_date).toLocaleDateString("en-IN", {

@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="home">
       <section className="hero">
-        <h1>RVITM Campus Placement Portal</h1>
+        <h1>Campus Placement Portal</h1>
         <p>Track Companies Coming to College</p>
       </section>
 
