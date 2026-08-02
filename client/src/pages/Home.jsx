@@ -6,7 +6,7 @@ function Home() {
     <div className="home">
       <section className="hero">
         <h1>Campus Placement Portal</h1>
-        <p>Track Companies Coming to College</p>
+        <p>RV Institute of Technology and Management</p>
       </section>
 
       <section className="feature-cards">
@@ -53,7 +53,7 @@ function Home() {
               <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
             </svg>
           </div>
-          <h2>ISE Student Details</h2>
+          <h2>Student Details</h2>
           <p>Review your academic details</p>
         </Link>
       </section>
