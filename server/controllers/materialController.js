@@ -6,9 +6,17 @@ const getAllMaterials = async (req, res) => {
 
         const [rows] = await db.query(
             `
-            SELECT id, title, description, file_url, created_at
-            FROM placement_materials
-            ORDER BY created_at DESC
+            SELECT
+                m.id,
+                m.title,
+                m.description,
+                m.file_url,
+                m.folder_id,
+                m.created_at,
+                f.name AS folder_name
+            FROM placement_materials m
+            LEFT JOIN placement_folders f ON f.id = m.folder_id
+            ORDER BY m.created_at DESC
             `
         );
 
@@ -29,7 +37,8 @@ const createMaterial = async (req, res) => {
     const {
         title,
         description,
-        file_url
+        file_url,
+        folder_id
     } = req.body;
 
     if (!title || !file_url) {
@@ -42,21 +51,40 @@ const createMaterial = async (req, res) => {
 
     try {
 
+        if (folder_id) {
+
+            const [folder] = await db.query(
+                "SELECT id FROM placement_folders WHERE id = ?",
+                [folder_id]
+            );
+
+            if (folder.length === 0) {
+
+                return res.status(400).json({
+                    message: "Folder not found"
+                });
+
+            }
+
+        }
+
         await db.query(
             `
             INSERT INTO placement_materials
             (
                 title,
                 description,
-                file_url
+                file_url,
+                folder_id
             )
             VALUES
-            (?, ?, ?)
+            (?, ?, ?, ?)
             `,
             [
                 title,
                 description || null,
-                file_url
+                file_url,
+                folder_id || null
             ]
         );
 
@@ -81,7 +109,8 @@ const updateMaterial = async (req, res) => {
     const {
         title,
         description,
-        file_url
+        file_url,
+        folder_id
     } = req.body;
 
     if (!title || !file_url) {
@@ -94,19 +123,38 @@ const updateMaterial = async (req, res) => {
 
     try {
 
+        if (folder_id) {
+
+            const [folder] = await db.query(
+                "SELECT id FROM placement_folders WHERE id = ?",
+                [folder_id]
+            );
+
+            if (folder.length === 0) {
+
+                return res.status(400).json({
+                    message: "Folder not found"
+                });
+
+            }
+
+        }
+
         const [result] = await db.query(
             `
             UPDATE placement_materials
             SET
                 title = ?,
                 description = ?,
-                file_url = ?
+                file_url = ?,
+                folder_id = ?
             WHERE id = ?
             `,
             [
                 title,
                 description || null,
                 file_url,
+                folder_id || null,
                 id
             ]
         );

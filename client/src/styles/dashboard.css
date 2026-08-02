@@ -107,6 +107,13 @@
   letter-spacing: -0.02em;
 }
 
+.manage-subheading {
+  margin: 2rem 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 .manage-form {
   background: var(--card);
   border: 1px solid var(--border);

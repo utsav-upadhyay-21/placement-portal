@@ -20,6 +20,45 @@ async function setup() {
 
         await db.query(
             `
+            CREATE TABLE IF NOT EXISTS placement_folders
+            (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(200) NOT NULL,
+                description TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )
+            `
+        );
+
+        const [materialColumns] = await db.query(
+            `
+            SELECT COLUMN_NAME
+            FROM information_schema.COLUMNS
+            WHERE TABLE_SCHEMA = DATABASE()
+              AND TABLE_NAME = 'placement_materials'
+              AND COLUMN_NAME = 'folder_id'
+            `
+        );
+
+        if (materialColumns.length === 0) {
+
+            await db.query(
+                `
+                ALTER TABLE placement_materials
+                ADD COLUMN folder_id INT NULL,
+                ADD CONSTRAINT fk_material_folder
+                    FOREIGN KEY (folder_id) REFERENCES placement_folders(id)
+                    ON DELETE SET NULL
+                `
+            );
+
+            console.log("Added folder_id column to placement_materials");
+
+        }
+
+        await db.query(
+            `
             CREATE TABLE IF NOT EXISTS semester_marks
             (
                 id INT AUTO_INCREMENT PRIMARY KEY,

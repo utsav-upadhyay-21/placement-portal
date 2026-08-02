@@ -11,6 +11,7 @@ const calendarRoutes = require("./routes/calendarRoutes");
 const adminRoutes=require("./routes/adminRoutes");
 const authRoutes = require("./routes/authRoutes");
 const materialRoutes = require("./routes/materialRoutes");
+const folderRoutes = require("./routes/folderRoutes");
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/calendar", calendarRoutes);
 app.use("/api/admin",adminRoutes);
 app.use("/api/materials", materialRoutes);
+app.use("/api/folders", folderRoutes);
 
 app.get("/", async (req, res) => {
     try {
