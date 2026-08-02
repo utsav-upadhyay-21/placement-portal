@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const verifyToken = require("../middleware/authMiddleware");
+const adminAuth = require("../middleware/adminAuth");
 
 const {
     getAllJobs,
@@ -15,14 +15,14 @@ const {
 router.get("/", getAllJobs);
 router.get("/:id", getJobById);
 
-router.post("/test", verifyToken, (req, res) => {
+router.post("/test", adminAuth, (req, res) => {
     res.json({
         message: "Welcome Admin",
-        admin: req.admin
+        admin: req.user
     });
 
 });
-router.post("/", verifyToken, createJob);
-router.put("/:id", verifyToken, updateJob);
-router.delete("/:id", verifyToken, deleteJob);
+router.post("/", adminAuth, createJob);
+router.put("/:id", adminAuth, updateJob);
+router.delete("/:id", adminAuth, deleteJob);
 module.exports = router;

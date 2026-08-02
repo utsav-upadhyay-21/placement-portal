@@ -1,6 +1,6 @@
 # Student Tracking System
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify)](https://placements-rvitm.netlify.app/) - https://placements-rvitm.netlify.app/
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify)](https://placements-ise.vercel.app/) - https://placements-ise.vercel.app/
 
 A comprehensive solution designed to streamline the management, monitoring, and analysis of student data. This system provides an efficient way to track academic performance, attendance, and administrative records.
 

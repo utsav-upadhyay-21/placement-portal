@@ -1,5 +1,7 @@
 const db = require("../config/db");
 
+const { invalidateCache } = require("../middleware/cacheMiddleware");
+
 const getAllEvents = async (req, res) => {
 
     try {
@@ -93,6 +95,8 @@ const createEvent = async (req, res) => {
 
         );
 
+        await invalidateCache(["calendar:events"]);
+
         res.status(201).json({
 
             message: "Event Created Successfully"
@@ -160,6 +164,8 @@ const updateEvent = async (req, res) => {
 
         }
 
+        await invalidateCache(["calendar:events"]);
+
         res.status(200).json({
             message: "Event Updated Successfully"
         });
@@ -197,6 +203,8 @@ const deleteEvent = async (req, res) => {
             });
 
         }
+
+        await invalidateCache(["calendar:events"]);
 
         res.status(200).json({
             message: "Event Deleted Successfully"

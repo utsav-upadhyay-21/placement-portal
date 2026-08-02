@@ -37,7 +37,7 @@ function Home() {
           <p>View the recruitment calendar and key deadlines</p>
         </Link>
 
-        <Link to="/student" className="feature-card student-feature">
+        <Link to="/student/login" className="feature-card student-feature">
           <div className="feature-icon">
             <svg
               width="32"
@@ -53,8 +53,8 @@ function Home() {
               <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
             </svg>
           </div>
-          <h2>Student Details</h2>
-          <p>Review your academic details</p>
+          <h2>Student Login</h2>
+          <p>Sign in to access your secure student dashboard</p>
         </Link>
       </section>
     </div>

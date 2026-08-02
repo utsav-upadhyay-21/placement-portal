@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import api from "../services/api";
 import Loading from "../components/Loading";
+import { isAdmin } from "../utils/auth";
 
 const initialJobState = {
   company_name: "",
@@ -25,8 +26,6 @@ function ManageJobs() {
   const [formData, setFormData] = useState(initialJobState);
   const [editingId, setEditingId] = useState(null);
 
-  const token = localStorage.getItem("token");
-
   const fetchJobs = async () => {
     try {
       const data = await api.get("/jobs");
@@ -42,7 +41,7 @@ function ManageJobs() {
     fetchJobs();
   }, []);
 
-  if (!token) return <Navigate to="/admin/login" replace />;
+  if (!isAdmin()) return <Navigate to="/admin/login" replace />;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

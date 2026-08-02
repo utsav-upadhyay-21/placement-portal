@@ -9,15 +9,19 @@ const studentRoutes = require("./routes/studentRoutes");
 const jobRoutes = require("./routes/jobRoutes");
 const calendarRoutes = require("./routes/calendarRoutes");
 const adminRoutes=require("./routes/adminRoutes");
+const authRoutes = require("./routes/authRoutes");
+const materialRoutes = require("./routes/materialRoutes");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/auth", authRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/calendar", calendarRoutes);
 app.use("/api/admin",adminRoutes);
+app.use("/api/materials", materialRoutes);
 
 app.get("/", async (req, res) => {
     try {

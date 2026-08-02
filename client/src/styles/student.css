@@ -18,6 +18,12 @@
   letter-spacing: -0.02em;
 }
 
+.student-profile-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
 .student-usn-badge {
   background: var(--muted);
   color: var(--accent);
@@ -36,4 +42,201 @@
   font-weight: 600;
   color: var(--accent);
   font-size: 1rem;
+}
+
+/* ===== LOGIN ===== */
+.login-hint {
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  margin-top: -1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== DASHBOARD TABS ===== */
+.dashboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-tab {
+  padding: 0.6rem 1.25rem;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all 200ms ease-out;
+}
+
+.dashboard-tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dashboard-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.dashboard-tab.logout {
+  margin-left: auto;
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.dashboard-tab.logout:hover {
+  background: var(--danger);
+  color: var(--accent-foreground);
+}
+
+/* ===== OVERVIEW ===== */
+.student-overview-grid {
+  max-width: 700px;
+}
+
+.overview-value {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 0.5rem;
+}
+
+.overview-value.mono {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.overview-value.accent {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+/* ===== CGPA ===== */
+.cgpa-summary {
+  max-width: 400px;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.cgpa-big {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.cgpa-caption {
+  color: var(--muted-foreground);
+  margin: 0.5rem 0 1.75rem;
+  font-size: 0.9rem;
+}
+
+.cgpa-details {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cgpa-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cgpa-label {
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cgpa-value {
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+/* ===== MATERIALS ===== */
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.material-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 200ms ease-out;
+}
+
+.material-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.material-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.material-desc {
+  color: var(--muted-foreground);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.material-date {
+  color: var(--muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.material-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.table-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.table-link:hover {
+  color: var(--accent-secondary);
+}
+
+@media (max-width: 768px) {
+  .dashboard-tab.logout {
+    margin-left: 0;
+  }
 }

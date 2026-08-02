@@ -4,7 +4,7 @@ const verifyToken = (req, res, next) => {
 
     const authHeader = req.headers.authorization;
 
-    if (!authHeader) {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
 
         return res.status(401).json({
             message: "Access Denied"
@@ -21,7 +21,7 @@ const verifyToken = (req, res, next) => {
             process.env.JWT_SECRET
         );
 
-        req.admin = decoded;
+        req.user = decoded;
 
         next();
 

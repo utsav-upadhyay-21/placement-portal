@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import api from "../services/api";
 import Loading from "../components/Loading";
+import { isAdmin } from "../utils/auth";
 
 function ManageStudents() {
   const [usn, setUsn] = useState("");
@@ -11,8 +12,7 @@ function ManageStudents() {
   const [success, setSuccess] = useState("");
   const [formData, setFormData] = useState({});
 
-  const token = localStorage.getItem("token");
-  if (!token) return <Navigate to="/admin/login" replace />;
+  if (!isAdmin()) return <Navigate to="/admin/login" replace />;
 
   const handleSearch = async (e) => {
     e.preventDefault();

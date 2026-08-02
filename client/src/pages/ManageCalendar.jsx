@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import api from "../services/api";
 import Loading from "../components/Loading";
+import { isAdmin } from "../utils/auth";
 
 const initialEventState = {
   company_name: "",
@@ -33,8 +34,7 @@ function ManageCalendar() {
     fetchEvents();
   }, []);
 
-  const token = localStorage.getItem("token");
-  if (!token) return <Navigate to="/admin/login" replace />;
+  if (!isAdmin()) return <Navigate to="/admin/login" replace />;
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));

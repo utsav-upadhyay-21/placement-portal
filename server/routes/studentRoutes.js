@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const verifyToken = require("../middleware/authMiddleware");
+const adminAuth = require("../middleware/adminAuth");
 
 const {
     getAllStudents,
@@ -9,9 +9,9 @@ const {
     updateStudent
 } = require("../controllers/studentController");
 
-router.get("/", getAllStudents);
-router.get("/:usn", getStudentByUSN);
+router.get("/", adminAuth, getAllStudents);
+router.get("/:usn", adminAuth, getStudentByUSN);
 
-router.put("/:usn", verifyToken, updateStudent);
+router.put("/:usn", adminAuth, updateStudent);
 
 module.exports = router;

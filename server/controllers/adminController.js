@@ -40,7 +40,8 @@ const login = async (req, res) => {
 
             {
                 id:admin.id,
-                username:admin.username
+                username:admin.username,
+                role:"admin"
             },
 
             process.env.JWT_SECRET,
