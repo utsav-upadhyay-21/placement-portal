@@ -28,10 +28,10 @@ function StudentLogin() {
 
   return (
     <div className="login-page">
+      <Link to="/" className="back-link">
+        &larr; Back to Home
+      </Link>
       <div className="login-card">
-        <Link to="/" className="back-link">
-          &larr; Back to Home
-        </Link>
         <h1>Student Login</h1>
         <p className="login-hint">
           Use your college email and USN as password
