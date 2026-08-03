@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { clearToken } from "../utils/auth";
 import Loading from "../components/Loading";
+import PlacementPolicy from "../components/PlacementPolicy";
 import "../styles/student.css";
 
 const TABS = [
   { key: "overview", label: "Dashboard" },
   { key: "profile", label: "Profile" },
-  { key: "semester", label: "Semester Marks" },
   { key: "cgpa", label: "CGPA" },
   { key: "materials", label: "Placement Materials" },
+  { key: "policy", label: "Placement Policy" },
 ];
 
 function StudentDashboard() {
@@ -126,33 +127,6 @@ function StudentDashboard() {
           </tr>
         </tbody>
       </table>
-    </div>
-  );
-
-  const renderSemesterMarks = () => (
-    <div className="manage-list">
-      {student.semester_marks && student.semester_marks.length > 0 ? (
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Semester</th>
-              <th>SGPA</th>
-              <th>Marks (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {student.semester_marks.map((mark) => (
-              <tr key={mark.semester}>
-                <td>{mark.semester}</td>
-                <td>{mark.sgpa || "N/A"}</td>
-                <td>{mark.marks != null ? `${mark.marks}%` : "N/A"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p className="empty-msg">No semester marks recorded yet.</p>
-      )}
     </div>
   );
 
@@ -297,9 +271,9 @@ function StudentDashboard() {
       <section className="dashboard-section">
         {activeTab === "overview" && renderOverview()}
         {activeTab === "profile" && renderProfile()}
-        {activeTab === "semester" && renderSemesterMarks()}
         {activeTab === "cgpa" && renderCgpa()}
         {activeTab === "materials" && renderMaterials()}
+        {activeTab === "policy" && <PlacementPolicy />}
       </section>
     </div>
   );

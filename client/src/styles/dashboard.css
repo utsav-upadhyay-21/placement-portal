@@ -186,14 +186,6 @@
   background: var(--muted);
 }
 
-.calendar-row {
-  cursor: pointer;
-}
-
-.calendar-row:hover {
-  background: var(--muted) !important;
-}
-
 @media (max-width: 768px) {
   .dashboard-grid {
     grid-template-columns: 1fr;

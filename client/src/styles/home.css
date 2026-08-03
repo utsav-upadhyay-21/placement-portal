@@ -22,12 +22,7 @@
   line-height: 1.75;
 }
 
-/* ===== Section Label Pattern ===== */
-.home .section-divider {
-  margin: 4rem auto 3rem;
-  max-width: 400px;
-}
-
+/* ===== Feature Cards ===== */
 .feature-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

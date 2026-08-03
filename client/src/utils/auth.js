@@ -15,6 +15,4 @@ export const decodeToken = (token) => {
 
 export const getRole = () => decodeToken(getToken())?.role || null;
 
-export const isStudent = () => getRole() === "student";
-
 export const isAdmin = () => getRole() === "admin";

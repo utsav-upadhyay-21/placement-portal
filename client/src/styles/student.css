@@ -1,21 +1,9 @@
-.student-search h1 {
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-}
-
 .student-profile-header {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
-}
-
-.student-profile-header h2 {
-  color: var(--foreground);
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
 }
 
 .student-profile-header h1 {
@@ -35,13 +23,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid var(--border);
-}
-
-.cgpa-cell {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--accent);
-  font-size: 1rem;
 }
 
 /* ===== LOGIN ===== */
@@ -293,6 +274,80 @@
 
 .table-link:hover {
   color: var(--accent-secondary);
+}
+
+/* ===== PLACEMENT POLICY ===== */
+.placement-policy {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.placement-policy-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+}
+
+.placement-policy-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.placement-policy-section h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.placement-policy-section p {
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  white-space: pre-line;
+}
+
+.policy-list {
+  list-style: none;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.policy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+}
+
+.policy-dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-top: 0.65rem;
+}
+
+.policy-dot.ok {
+  background: var(--success);
+}
+
+.policy-dot.no {
+  background: var(--danger);
+}
+
+.policy-text-bold {
+  font-weight: 600;
+  color: var(--foreground);
 }
 
 @media (max-width: 768px) {
