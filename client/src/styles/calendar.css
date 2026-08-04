@@ -106,6 +106,7 @@
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   position: relative;
+  min-width: 0;
 }
 
 .calendar-cell:nth-child(7n) {
@@ -155,9 +156,9 @@
   font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
   transition: opacity 200ms;
 }
 
