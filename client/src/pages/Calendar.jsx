@@ -9,6 +9,24 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
+const JTYPE_COLORS = {
+  Internship: { bg: "#2563EB", fg: "#FFFFFF" },
+  "Internship + PBC/PPO": { bg: "#7C3AED", fg: "#FFFFFF" },
+  FTE: { bg: "#16A34A", fg: "#FFFFFF" },
+};
+
+const EVENT_TYPE_COLORS = {
+  "RVITM Campus": { bg: "#D97706", fg: "#FFFFFF" },
+  "RVCE Campus": { bg: "#DC2626", fg: "#FFFFFF" },
+  "Company Campus": { bg: "#0D9488", fg: "#FFFFFF" },
+};
+
+const getJtypeColor = (jtype) =>
+  JTYPE_COLORS[jtype] || { bg: "var(--accent)", fg: "var(--accent-foreground)" };
+
+const getEventTypeColor = (eventType) =>
+  EVENT_TYPE_COLORS[eventType] || { bg: "var(--muted-foreground)", fg: "#FFFFFF" };
+
 function getDaysInMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
 }
@@ -243,6 +261,32 @@ function Calendar() {
                 year: "numeric",
               })}
             </p>
+            {(selectedEvent.jtype || selectedEvent.event_type) && (
+              <div className="modal-tags">
+                {selectedEvent.jtype && (
+                  <span
+                    className="event-tag"
+                    style={{
+                      background: getJtypeColor(selectedEvent.jtype).bg,
+                      color: getJtypeColor(selectedEvent.jtype).fg,
+                    }}
+                  >
+                    {selectedEvent.jtype}
+                  </span>
+                )}
+                {selectedEvent.event_type && (
+                  <span
+                    className="event-tag"
+                    style={{
+                      background: getEventTypeColor(selectedEvent.event_type).bg,
+                      color: getEventTypeColor(selectedEvent.event_type).fg,
+                    }}
+                  >
+                    {selectedEvent.event_type}
+                  </span>
+                )}
+              </div>
+            )}
             {selectedEvent.description && (
               <p className="modal-desc">{selectedEvent.description}</p>
             )}

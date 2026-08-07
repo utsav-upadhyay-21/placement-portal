@@ -60,7 +60,9 @@ const createEvent = async (req, res) => {
     const {
         company_name,
         visit_date,
-        description
+        description,
+        jtype,
+        event_type
     } = req.body;
 
     if (!company_name || !visit_date) {
@@ -80,17 +82,21 @@ const createEvent = async (req, res) => {
             (
                 company_name,
                 visit_date,
-                description
+                description,
+                jtype,
+                event_type
             )
 
             VALUES
-            (?, ?, ?)
+            (?, ?, ?, ?, ?)
             `,
 
             [
                 company_name,
                 visit_date,
-                description
+                description,
+                jtype || null,
+                event_type || null
             ]
 
         );
@@ -123,7 +129,9 @@ const updateEvent = async (req, res) => {
     const {
         company_name,
         visit_date,
-        description
+        description,
+        jtype,
+        event_type
     } = req.body;
 
     if (!company_name || !visit_date) {
@@ -143,7 +151,9 @@ const updateEvent = async (req, res) => {
             SET
                 company_name = ?,
                 visit_date = ?,
-                description = ?
+                description = ?,
+                jtype = ?,
+                event_type = ?
             WHERE id = ?
             `,
 
@@ -151,6 +161,8 @@ const updateEvent = async (req, res) => {
                 company_name,
                 visit_date,
                 description,
+                jtype || null,
+                event_type || null,
                 id
             ]
 
