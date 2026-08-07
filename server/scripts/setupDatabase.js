@@ -57,24 +57,6 @@ async function setup() {
 
         }
 
-        await db.query(
-            `
-            CREATE TABLE IF NOT EXISTS semester_marks
-            (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                usn VARCHAR(20) NOT NULL,
-                semester INT NOT NULL,
-                sgpa DECIMAL(4,2),
-                marks DECIMAL(5,2),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE KEY uq_usn_semester (usn, semester),
-                CONSTRAINT fk_semester_marks_usn
-                    FOREIGN KEY (usn) REFERENCES students(usn)
-                    ON DELETE CASCADE
-            )
-            `
-        );
-
         console.log("Tables created successfully");
 
         const [tables] = await db.query("SHOW TABLES");

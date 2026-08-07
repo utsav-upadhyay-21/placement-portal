@@ -126,19 +126,8 @@ const getProfile = async (req, res) => {
 
         const student = rows[0];
 
-        const [semesterMarks] = await db.query(
-            `
-            SELECT semester, sgpa, marks
-            FROM semester_marks
-            WHERE usn = ?
-            ORDER BY semester ASC
-            `,
-            [req.user.usn]
-        );
-
         res.json({
-            ...student,
-            semester_marks: semesterMarks
+            ...student
         });
 
     } catch (error) {
